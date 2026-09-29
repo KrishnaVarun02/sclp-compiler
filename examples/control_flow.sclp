@@ -1,0 +1,20 @@
+bool divisible(int value, int divisor) { return value % divisor == 0; }
+int main() {
+    int candidate = 1;
+    int sum = 0;
+    while (candidate < 30) {
+        candidate = candidate + 1;
+        if (divisible(candidate, 2)) { continue; }
+        if (candidate > 15) { break; }
+        sum = sum + candidate;
+    }
+    print(sum); // 3+5+7+9+11+13+15 = 63
+    {
+        int sum = 99;
+        print(sum); // lexical shadowing
+    }
+    print(sum);
+    bool safe = false && (100 / 0 > 1);
+    print(safe); // short circuit prevents division by zero
+    return 0;
+}

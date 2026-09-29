@@ -1,0 +1,19 @@
+// Functions are collected before checking bodies, so forward calls work.
+bool even(int n) {
+    if (n == 0) { return true; }
+    return odd(n - 1);
+}
+bool odd(int n) {
+    if (n == 0) { return false; }
+    return even(n - 1);
+}
+int fib(int n) {
+    if (n < 2) { return n; }
+    return fib(n - 1) + fib(n - 2);
+}
+int main() {
+    print(fib(12));
+    print(even(42));
+    print(odd(42));
+    return 0;
+}

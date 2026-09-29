@@ -1,0 +1,24 @@
+name: compiler-tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Linux build tools
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y build-essential flex bison python3 clang
+      - name: Build
+        run: make -j2
+      - name: Native execution and semantic tests
+        run: make test
+      - name: Build examples
+        run: make examples

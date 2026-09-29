@@ -1,0 +1,16 @@
+int gcd(int a, int b) {
+    while (b != 0) {
+        int remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+    return a;
+}
+int main() {
+    print(gcd(1071, 462));
+    print(-17 / 5); // truncates toward zero
+    print(-17 % 5); // remainder has dividend's sign
+    print((2 + 3) * (4 + 5));
+    print(9223372036854775807 + 1); // defined two's-complement wrap
+    return 0;
+}
